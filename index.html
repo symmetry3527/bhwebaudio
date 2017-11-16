@@ -27,9 +27,9 @@
 		
 	window.requestAnimationFrame(loop);})();
 
-	playBut.oneclick = function(){ newSound.play(); };
-	stopBut.oneclick = function(){ newSound.play(); };
-	pauseBut.oneclick = function(){ newSound.play(); };
+	playBut.onclick = function(){ newSound.play(); };
+	stopBut.onclick = function(){ newSound.play(); };
+	pauseBut.onclick = function(){ newSound.play(); };
 
 	audio_file.onchange = function(){
 		newSound.change(URL.createObjectURL(this.files[0]));
