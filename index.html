@@ -3,15 +3,29 @@
 	<title>BH Web Audio</title>
 	<script src="./soundV.js"></script>
 	<style>
-		.circle{width:200px; height:200px; background:red; border-radius:100px; position: absolute; left:200px; top:200px;}
+		html,body,div,img{margin:0; padding:0;}
+		.circle{width:200px; height:200px; background:red; position: absolute; left:calc(50%-100%); top:200px;
+		animation:Moving 8s linear infinite;}
+		
+		@keyframes Moving{
+			0%{}
+			100%{trnsform:rotate(-360deg)}
+		}
+		.circle img{width:100%; height:auto;}
 	</style>
 </head>
 <body>
 	<button id="stopBut">stop</button>
 	<button id="playBut">play</button>
 	<button id="pauseBut">pause</button>
+	
+	<button id="play1">그린데이</button>
+	
 	<input id="audio_file" type="file" accept="audio/*">
-	<div class = "circle" id = "circle"></div>
+	
+	<div class = "circle" id = "circle">
+	  <img src="bbd.jpg" id="cImg">
+	</div>
 <script>
 	var newSound = new SoundBH("bbd.mp3",16);
 
@@ -33,6 +47,11 @@
 
 	audio_file.onchange = function(){
 		newSound.change(URL.createObjectURL(this.files[0]));
+	};
+	
+	play1.onclick = function(){
+		cImg.setAttribute("src","bbd.jpg");
+		newSound.change("bbd.mp3");
 	};
 
 </script>
