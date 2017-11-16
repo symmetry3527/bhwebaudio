@@ -1,0 +1,39 @@
+<!doctype html>
+<head>
+	<title>BH Web Audio</title>
+	<script src="./soundV.is"></script>
+	<style>
+		.circle{width:200px; height:200px; background:red; border-radius:100px; position: absolute; left:200px; top:200px;}
+	</style>
+</head>
+<body>
+	<botton id="stopBut">stop</botton>
+	<botton id="playBut">play</botton>
+	<botton id="pauseBut">pause</botton>
+	<input id="audio_file" type="file" accept="audio/*">
+	<div class = "circle" id = "circle"></div>
+<script>
+	var newSound = new SoundBH("bbd.mp3",16);
+
+	(function loop(){
+
+		var vol = newSound.getGain()/10;
+
+		circle.style.width = vol + "px";
+		circle.style.height = vol + "px";
+		circle.style.borderRadius = vol/2 + "px";
+		circle.style.left = 300 - (vol/2) + "px";
+		circle.style.top = 300 - (vol/2) + "px";
+		
+	window.requestAnimationFrame(loop);})();
+
+	playBut.oneclick = function(){ newSound.play(); };
+	stopBut.oneclick = function(){ newSound.play(); };
+	pauseBut.oneclick = function(){ newSound.play(); };
+
+	audio_file.onchange = function(){
+		newSound.change(URL.createObjectURL(this.files[0]));
+	};
+
+</script>
+</body>
